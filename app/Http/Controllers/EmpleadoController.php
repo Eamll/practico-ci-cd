@@ -9,16 +9,17 @@ class EmpleadoController extends Controller
 {
     public function index()
     {
-        // Obtener todos los empleados de la base de datos
         $empleados = Empleado::all();
-
-        // Retornar la vista 'empleados.index' con los empleados
         return view('empleados.index', compact('empleados'));
+    }
+
+    public function create()
+    {
+        return view('empleados.create');
     }
 
     public function store(Request $request)
     {
-        // Validar los datos del formulario
         $request->validate([
             'nombres' => 'required|string|max:255',
             'apellidos' => 'required|string|max:255',
@@ -30,11 +31,13 @@ class EmpleadoController extends Controller
             'departamento' => 'required|string|max:255',
         ]);
 
-        // Crear un nuevo empleado con los datos validados
         Empleado::create($request->all());
-
-        // Redirigir a la lista de empleados con un mensaje de éxito
         return redirect('/empleados')->with('success', 'Empleado creado correctamente.');
+    }
+
+    public function edit(Empleado $empleado)
+    {
+        return view('empleados.edit', compact('empleado'));
     }
 
     public function update(Request $request, Empleado $empleado)
@@ -45,7 +48,7 @@ class EmpleadoController extends Controller
             'puesto' => 'required|string|max:255',
             'fecha_contratacion' => 'required|date',
             'salario' => 'required|numeric',
-            'email' => 'required|email|unique:empleados,email,' . $empleado->id_empleado,
+            'email' => 'required|email|unique:empleados,email,' . $empleado->id,
             'telefono' => 'required|string|max:15',
             'departamento' => 'required|string|max:255',
         ]);
