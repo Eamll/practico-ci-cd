@@ -1,19 +1,14 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Lista de Empleados</title>
-</head>
-<body>
+@extends('layouts.layout')
 
-<div class="container">
+@section('title', 'Lista de Empleados')
+
+@section('content')
     <h1 class="text-center">Lista de Empleados</h1>
-    <a href="{{ route('empleados.create') }}" class="btn btn-primary">Nuevo Empleado</a>
+    <a href="{{ route('empleados.create') }}" class="btn btn-primary mb-3">Nuevo Empleado</a>
 
     <table class="table table-striped table-bordered table-hover">
         <thead>
-            <tr class="info">
+            <tr class="table-info">
                 <th>Nombre</th>
                 <th>Puesto</th>
                 <th>Salario</th>
@@ -37,7 +32,4 @@
             @endforeach
         </tbody>
     </table>
-</div>
-
-</body>
-</html>
+@endsection
