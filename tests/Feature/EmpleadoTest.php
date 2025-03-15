@@ -9,7 +9,7 @@ use Tests\TestCase;
 
 class EmpleadoTest extends TestCase
 {
-    /* use RefreshDatabase; */
+    use RefreshDatabase;
 
     /** @test */
     public function puede_listar_empleados()
