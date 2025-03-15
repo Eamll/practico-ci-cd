@@ -36,4 +36,27 @@ class EmpleadoController extends Controller
         // Redirigir a la lista de empleados con un mensaje de éxito
         return redirect('/empleados')->with('success', 'Empleado creado correctamente.');
     }
+
+    public function update(Request $request, Empleado $empleado)
+    {
+        $request->validate([
+            'nombres' => 'required|string|max:255',
+            'apellidos' => 'required|string|max:255',
+            'puesto' => 'required|string|max:255',
+            'fecha_contratacion' => 'required|date',
+            'salario' => 'required|numeric',
+            'email' => 'required|email|unique:empleados,email,' . $empleado->id_empleado,
+            'telefono' => 'required|string|max:15',
+            'departamento' => 'required|string|max:255',
+        ]);
+
+        $empleado->update($request->all());
+        return redirect()->route('empleados.index')->with('success', 'Empleado actualizado correctamente.');
+    }
+
+    public function destroy(Empleado $empleado)
+    {
+        $empleado->delete();
+        return redirect()->route('empleados.index')->with('success', 'Empleado eliminado correctamente.');
+    }
 }
