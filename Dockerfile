@@ -46,6 +46,9 @@ RUN cp .env.example .env && \
 RUN mkdir -p storage/logs bootstrap/cache \
     && chmod -R 775 storage bootstrap/cache
 
+# Run database migrations
+RUN php artisan migrate --force
+
 # Expose port 8000
 EXPOSE 8000
 
