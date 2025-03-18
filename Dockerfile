@@ -3,8 +3,7 @@ FROM elrincondeisma/php-for-laravel:8.3.7
 WORKDIR /app
 
 # Install PostgreSQL dependencies
-RUN apt-get update && apt-get install -y \
-    libpq-dev \
+RUN apk add --no-cache postgresql-dev \
     && docker-php-ext-install pdo_pgsql
 
 # Define build arguments for database configuration
