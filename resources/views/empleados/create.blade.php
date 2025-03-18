@@ -25,7 +25,7 @@
         </div>
 
         <div class="mb-3">
-            <label class="form-label">Apellido:</label>
+            <label class="form-label">Apellidos:</label>
             <input type="text" name="apellidos" class="form-control" required>
         </div>
 
