@@ -1,17 +1,9 @@
 name: Laravel Tests
 
 on:
-  push:
-    branches:
-      - main
-      - develop
-      - 'feature/**'
-      - 'release/**'
-      - 'hotfix/**'
-      - 'bugfix/**'
   pull_request:
     branches:
-      - main
+      - master
       - develop
 
 jobs:
