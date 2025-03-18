@@ -54,7 +54,8 @@ jobs:
           else
             ENV="test"
           fi
-          echo "IMAGE_TAG=${{ env.REGISTRY }}/${{ env.BASE_IMAGE_NAME }}-${ENV}:latest" >> $GITHUB_OUTPUT
+          REPO_NAME=$(echo "${{ env.BASE_IMAGE_NAME }}" | tr '[:upper:]' '[:lower:]')
+          echo "IMAGE_TAG=${{ env.REGISTRY }}/${REPO_NAME}-${ENV}:latest" >> $GITHUB_OUTPUT
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
