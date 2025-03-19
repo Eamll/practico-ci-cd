@@ -84,3 +84,5 @@ php artisan test
 
 Esto ejecutará las pruebas de tu aplicación y te mostrará el resultado en la terminal.
 ```
+
+Los ambientes tienen bases de datos individuales cada uno.
